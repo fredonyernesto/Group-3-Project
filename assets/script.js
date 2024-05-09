@@ -1,5 +1,6 @@
 let city = document.querySelector('.search-bar');
 
+//appends desired city from search bar into api url
 function appendCity(event){
     city = document.querySelector('.search-bar').value;
     console.log("City" + city)
