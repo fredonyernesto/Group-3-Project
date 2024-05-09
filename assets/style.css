@@ -1,7 +1,61 @@
 body {
-    background: white;
-    color: black;
-    padding: 25px;
-    font-family: sans-serif;
-  }
-  
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+header {
+  background-color: #f1f1ec;
+  border-radius: 5px;
+  width: 100%;
+  display: flex;
+  text-align: center;
+}
+
+#hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#hero img,
+#hero button {
+  margin: 1em;
+}
+
+.recipe-categories {
+  position: relative;
+}
+
+#cookbook-list {
+  display: none;
+  position: absolute;
+  list-style-type: none;
+  padding: 0;
+}
+
+#cookbook-list li {
+  margin: 0;
+}
+
+#cook-book:hover #cookbook-list {
+  display: block;
+}
+
+header #Cook-Book,
+header #taste-switch,
+header #about-us {
+  margin: 1em;
+  font-weight: bolder;
+  background-color: white;
+  color: rgb(0, 84, 255);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+header #Cook-Book:hover,
+header #taste-switch:hover,
+header #about-us:hover {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+}
