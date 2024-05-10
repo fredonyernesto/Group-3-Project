@@ -81,7 +81,7 @@ header #about-us:hover {
 
 #Regenerate {
   font-weight: bolder;
-  background-color: #f7f0e4;
+  background-color: #babde2;
   color: #374375;
   border: none;
   padding: 10px 20px;
@@ -106,6 +106,26 @@ header #about-us:hover {
   width: auto;
 }
 
+@media screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-bar {
+    margin-bottom: 10px;
+  }
+  #Regenerate {
+    margin-top: 10px;
+  }
+
+  #save-to-cookbook {
+    width: auto;
+    margin: 1em;
+  }
+}
+
+
 .search-bar {
   border-radius: 5px;
   background-color: #babde2;
@@ -115,10 +135,17 @@ header #about-us:hover {
   align-items: center;
   text-align: center;
 }
-.search-bar input[type="text"]{
-  width: 200%;
-  height: 50%;
+.search-bar input[type="text"] {
+  width: 100%;
+  height: 100%;
+  color: #374375;
 }
+.search-bar::placeholder {
+  color: #374375;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+}
+
 
 #save-to-cookbook {
   margin: 1em;
