@@ -1,39 +1,47 @@
 let city = document.querySelector('.search-bar');
 
+//Function to fetch data from a given URL
+function fetchData(url) {
+    return fetch(url)
+    .then(response => {
+        if(!response.ok){
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation', error);
+    });
+}
 
+//Function to append city data based on user input 
 function appendCity(event){
-    event.preventDefault(); // Prevent default form submission behavior
+    event.preventDefault();
 
     const city = document.querySelector('.search-bar').value;
-    const apiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=c3023f6bd0f4493002d6feb29e0f0be6`;
+    const geoApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=c3023f6bd0f4493002d6feb29e0f0be6`
 
-    fetch(apiUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
+    fetchData(geoApiUrl)
         .then(data => {
-            console.log('Data received:', data);
             const lat = data[0].lat;
             const lon = data[0].lon;
-            const weatherApiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=c3023f6bd0f4493002d6feb29e0f0be6`;
-            return fetch(weatherApiUrl)
+            const weatherApiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=c3023f6bd0f4493002d6feb29e0f0be6`
+            return fetchData(weatherApiUrl)
         })
-        .then(weatherResponse => {
-            if (!weatherResponse.ok) {
-                throw new Error('Weather API response was not ok');
-            }
-            return weatherResponse.json();
-        })
-        .then(weatherData => {
-            console.log('Weather Data received:', weatherData);
-        })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
+        .then(weatherdata => {
+            console.log('Weather Data received:', weatherdata);
         });
 }
 
-document.getElementById('submit').addEventListener('click', appendCity);
+const foodUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata'
 
+//Function to append food data
+function appendFood(){
+    fetchData(foodUrl)
+        .then(data => {
+            console.log('Food Data received:', data);
+        });
+}
+
+appendFood();
+document.getElementById('submit').addEventListener('click', appendCity);
