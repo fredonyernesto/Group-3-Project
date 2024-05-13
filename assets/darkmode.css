@@ -9,4 +9,11 @@
         background-color: #374375;
         color: #fffcf5;
     }
+    header #Cook-Book:hover,
+    header #taste-switch:hover,
+    header #about-us:hover{
+        background-color: rgb(239 ,211, 129);
+        color: #374375;
+    }
+
 }
