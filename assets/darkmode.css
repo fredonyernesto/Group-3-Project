@@ -15,5 +15,33 @@
         background-color: rgb(239 ,211, 129);
         color: #374375;
     }
+    #welcome-message h1 {
+        color: #babde2;
+    }
+    #Regenerate{
+        background-color: #374375;
+        color: #fffcf5;
+    }
+    #Regenerate:hover{
+        background-color: rgb(239 ,211, 129);
+    }
+    .container
+    {
+        background-color: #babde2;
+    }
+    .search-bar{
+        background-color: #374375;
+    }
+    .search-bar::placeholder {
+        color: #fffcf5;
+    }
+    #save-to-cookbook {
+        background-color: #374375;
+        color: #fffcf5;
+    }
+    #save-to-cookbook:hover {
+        background-color: rgb(239 ,211, 129);
+        color: #374375;
+    }
 
 }
