@@ -1,68 +1,15 @@
 .dark-mode {
-    background-color: #374375;
-    header{
-        background-color: #babde2;
+    background-color: #0b0e18;
+    
+    header {
+        background-color: #374375
     }
-    header #Cook-Book,
-    header #taste-switch,
-    header #about-us{
-        background-color: #374375;
-        color: #fffcf5;
-    }
-    header #Cook-Book:hover,
-    header #taste-switch:hover,
-    header #about-us:hover{
-        background-color: rgb(239 ,211, 129);
-        color: #374375;
-    }
-    #welcome-message h1 {
-        color: #babde2;
-    }
-    #Regenerate{
-        background-color: #374375;
-        color: #fffcf5;
-    }
-    #Regenerate:hover{
-        background-color: rgb(239 ,211, 129);
-        color: #374375;
-    }
-    .container
-    {
-        background-color: #babde2;
-    }
-    .search-bar{
+    
+    .container {
         background-color: #374375;
     }
-    .search-bar::placeholder {
-        color: #fffcf5;
-    }
-    #save-to-cookbook {
+    
+    #section-2 , .recipes {
         background-color: #374375;
-        color: #fffcf5;
     }
-    #save-to-cookbook:hover {
-        background-color: rgb(239 ,211, 129);
-        color: #374375;
-    }
-    .search-bar input [type="text"]{
-        color: #fffcf5;
-    }
-    #section-2 {
-        background-color: #babde2;
-    }
-    .background-color-container{
-        background-color: #babde2;
-    }
-    .recipes {
-        background-color: #babde2;
-    }
-    #rating-bttn {
-        background-color: #374375;
-        color: #fffcf5;
-    }
-    #rating-bttn:hover {
-        background-color: rgb(239 ,211, 129);
-        color: #374375;
-    }
-
 }
