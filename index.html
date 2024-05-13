@@ -1,52 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
+ <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/script.js">
-    <link rel="stylesheet" href="./assets/style.css"
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="./assets/darkmode.css">
     <title>Weather Chef</title>
   </head>
-  <body>
+  <body class="dark-mode">
+    
     <header id="hero">
-      <h1>Weather Chef</h1>
-      <div class="recipe-categories">
-        <h2>Cookbook</h2>
-        <ul>
-          <li><a href="#dinner">Dinner</a></li>
-          <li><a href="#desserts">Desserts</a></li>
-          <li><a href="#lunch">Lunch</a></li>
-          <li><a href="#snacks">Snacks</a></li>
-        </ul>
-      </div>
-      <h2 id="about-us">About Us</h2>
+      <img src="assets/weathercheflogo1.1.png" alt="logo of weather chef" width="100px" height="100px">
+      <section class="recipe-categories">
+        <button id="Cook-Book">Cook Book</button>     
+        <ul id="cookbook-list">
+            <li><a href="#dinner">Dinner</a></li>
+            <li><a href="#desserts">Desserts</a></li>
+            <li><a href="#lunch">Lunch</a></li>
+            <li><a href="#snacks">Snacks</a></li>
+          </ul>
+      </section>
+      <button id="taste-switch">Taste Switch</button>
+      <button id="about-us">About Us</button>
+      <button id="toggle">Dark Mode</button>
     </header>
+    <section id="welcome-message">
+      <h1>Welcome Message</h1>
+    </section>
     <div class="container">
-      <div class="search-bar">
-        <input type="text" placeholder="Enter your location">
-      </div>
-      <div id="save-to-cookbook">
-        <button>Save To Cookbook</button>
-      </div>
+
+     <!-- <div class="search-bar"> -->
+        <input class="search-bar" type="text" placeholder="Enter your location...">
+       <button id="submit">Submit</button>
+      <!-- </div> -->
+      <button id="save-to-cookbook"> Save to Cookbook </button>
+      <button id="Regenerate">Regenerate</button>
+
       <div class="weather-info">
         <!-- Weather information will be displayed here -->
       </div>
-      <div class="recipes">
-        <section id="recipe-image">
-          <img src="" alt="">
-          <!-- Recipe image will be displayed here -->
-        </section>
-        <section id="recipe-name">
-          <h3></h3>
-          <!-- Recipe name will be displayed here -->
-        </section>
-        <section id="recipe-instructions">
-          <h3>Step-by-step</h3>
-          <!-- Recipe instructions will be displayed here -->
-        </section>
-        <section id="rating-bttn">Rating</section>
-      </div>
     </div>
-    <script src="script.js"></script>
+<div class="container-1">
+      <div id="section-2">
+        <div class="recipes">
+          <section id="recipe-image">
+            <img src="" alt="">
+            <!-- Recipe image will be displayed here -->
+          </section>
+          <section id="recipe-name">
+            <h3></h3>
+            <!-- Recipe name will be displayed here -->
+          </section>
+          <section id="recipe-instructions">
+            <h3>Step-by-step</h3>
+            <!-- Recipe instructions will be displayed here -->
+          </section>
+          <button id="rating-bttn">Rating</button>
+        </div>
+      </div>
+    </div> 
+    <script src="./assets/script.js"></script>   
   </body>
 </html>
