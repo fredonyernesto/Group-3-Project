@@ -1,6 +1,8 @@
 let darkMode = false;
 const toggleButton = document.getElementById('toggle');
 const body = document.body;
+let wData; 
+let cData; 
 
 //Function to enable dark mode
 toggleButton.addEventListener('click', function () {
@@ -47,6 +49,10 @@ function appendCity(event) {
         })
         .then(weatherdata => {
             console.log('Weather Data received:', weatherdata);
+            wData = weatherdata.list[0].weather[0].main;
+            linkWeatherFood(wData);
+            return wData; 
+
         });
 }
 
@@ -64,13 +70,30 @@ const categoryList = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
 //         })
 // }
 
+
 // Function to append category data 
-function appendCategory(event) {
-    let selectedCategory = event.target.value;
+function appendCategory(selectedCategory) {
+    //let selectedCategory;
+    console.log("selected category: " + selectedCategory);
     let categoryUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${selectedCategory}`;
+
+    
+
     fetchData(categoryUrl)
         .then(data => {
             console.log('Category Data received:', data);
+
+            //choose random value in category
+            let random = Math.floor(Math.random() * data.meals.length);
+            let name = data.meals[random].strMeal;
+
+            let recipe = `https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`;
+            console.log("NAME OF THE RECIPE: ", name);
+            
+            //Selects random recipe from category
+            fetchData(recipe)
+            .then(data => { console.log("Data for recipe:" , data)})
+
         })
 }
 
@@ -79,5 +102,26 @@ function appendButton(){
     button.addEventListener('click', appendCategory);
 }
 
+
+
+const typeWeather = ["Thunderstorm", "Drizzle", "Rain", "Snow", "Clouds"];
+const categories = ["Lamb", 'Pasta', 'Pork', 'Seafood', 'Side', 'Side', 'Vegetarian'];
+
+function linkWeatherFood(wData){
+
+
+    for (let i = 0; i < typeWeather.length; i++){
+        if(typeWeather[i] == wData){
+            cData = categories[i];
+            console.log(cData);
+
+            //Chooses corresponding categories and selects random recipe within that category
+            appendCategory(cData);
+            
+    }
+    }
+}
+
 appendButton();
 document.getElementById('submit').addEventListener('click', appendCity);
+
