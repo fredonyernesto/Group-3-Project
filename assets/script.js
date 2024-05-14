@@ -12,6 +12,16 @@ toggleButton.addEventListener('click', function () {
         darkMode = true;
     }
 });
+// trying to make the logo function as a home button
+document.addEventListener("DOMContentLoaded", function() {
+    const logo = document.getElementById("logo");
+
+    logo.addEventListener("click", function() {
+        history.back();
+    });
+});
+
+
 
 let city = document.querySelector('.search-bar');
 let categoryArr = [];
@@ -90,4 +100,5 @@ document.addEventListener("DOMContentLoaded", function() {
       window.location.href = "about.html";
     });
   });
+
   
