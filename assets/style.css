@@ -242,4 +242,53 @@ header #about-us:hover {
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   background-color: rgb(239, 221, 129); /* Same as other button hover background */
 }
+/* new section dividor, about page css */
+#about-us-blog {
+  background-color: #f7f0e4;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  margin: 10px 80px 0px 80px;
+}
+
+#about-us-blog h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #374375;
+}
+
+#about-us-blog h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #374375;
+}
+
+section[id^="Sephora"],
+section[id^="Ernest"],
+section[id^="Sabely"],
+section[id^="Mathieu"],
+section[id^="Andrew"] {
+  background-color: #f7f0e4;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  margin: 10px 80px 0px 80px;
+}
+
+section[id^="Sephora"] h1,
+section[id^="Ernest"] h1,
+section[id^="Sabely"] h1,
+section[id^="Mathieu"] h1,
+section[id^="Andrew"] h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #374375;
+}
+
+section[id^="Sephora"] h3,
+section[id^="Ernest"] h3,
+section[id^="Sabely"] h3,
+section[id^="Mathieu"] h3,
+section[id^="Andrew"] h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #374375;
+}
+
 
