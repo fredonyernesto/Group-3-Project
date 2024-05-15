@@ -82,6 +82,13 @@ function appendCategory(selectedCategory) {
             let recipePNG = randomMeal.strMealThumb;
             
 
+            //Selects random recipe from category
+            fetchData(recipe)
+            .then(data => { ``
+                
+                recipeParts(data, name);
+                return data})
+
             document.getElementById('recipe-name').textContent = name;
             document.getElementById('recipe-image').src = recipePNG;
             document.getElementById('recipe-instructions').textContent = randomInstructions;
@@ -106,6 +113,7 @@ function appendButton(){
 
 
 
+
 const typeWeather = ["Thunderstorm", "Drizzle", "Rain", "Snow", "Clouds", "Clear"];
 const categories = ["Lamb", 'Pasta', 'Pork', 'Seafood', 'Side', 'Side', 'Vegetarian'];
 
@@ -117,11 +125,50 @@ function linkWeatherFood(wData){
             console.log("Your category:", cData);
 
             //Chooses corresponding categories and selects random recipe within that category
-            appendCategory(cData);
+            console.log("this is returned" + appendCategory(cData));
             
-    }
+    } 
     }
 }
+
+
+function recipeParts(rdata, name){
+    console.log("Data for recipe:" , rdata);
+    let recipe = rdata.meals[0];
+
+    let category = recipe.strCategory;
+    let instructions = recipe.strInstructions;
+    let imageUrl = recipe.strMealThumb;
+    
+    let ingredientsList = [];  
+    //I need help converting string to variable
+    let i = 1;
+    let strIn = "strIngredient" + i;
+    console.log(recipe.strIn);
+    // while(recipe.strIn != null){
+    //    ingredientsList.push(recipe.strIndredients(i));
+    //    i++;
+    // }
+
+   console.log("Name: ", name);
+   console.log("Category", category);
+   console.log("Instructions", instructions);
+   console.log("url", imageUrl);
+
+   //document.getElementById(recipe-name).innerHTML = name;
+
+   //apend these variables to html elements
+   
+   document.getElementById("recipe-name").innerHTML = name;
+   document.getElementById("recipe-instructions").innerHTML = instructions;
+
+    
+   document.getElementById.css("src", "imageUrl");
+
+    
+
+}
+
 
 appendButton();
 document.getElementById('submit').addEventListener('click', appendCity);
