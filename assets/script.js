@@ -3,6 +3,7 @@ const toggleButton = document.getElementById('toggle');
 const body = document.body;
 let wData; 
 let cData; 
+let wIcon;
 
 //Function to enable dark mode
 toggleButton.addEventListener('click', function () {
@@ -23,11 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
-
 let city = document.querySelector('.search-bar');
-let categoryArr = [];
-
 
 // Function to fetch data from a given URL
 function fetchData(url) {
@@ -45,41 +42,54 @@ function fetchData(url) {
 
 // Function to append city data based on user input 
 function appendCity(event) {
+    // Prevent default form submission behavior
     event.preventDefault();
 
+    // Get the city name from the input field
     const city = document.querySelector('.search-bar').value;
-    const geoApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=c3023f6bd0f4493002d6feb29e0f0be6`;
 
+    // Construct the URL for the Geo API
+    const geoApiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=c3023f6bd0f4493002d6feb29e0f0be6`;
+
+    // Fetch data from the Geo API
     fetchData(geoApiUrl)
         .then(data => {
+            // Extract latitude and longitude from the response data
             const lat = data[0].lat;
             const lon = data[0].lon;
-            const weatherApiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=c3023f6bd0f4493002d6feb29e0f0be6`;
+
+            // Construct the URL for the Weather API using latitude and longitude
+            const weatherApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=c3023f6bd0f4493002d6feb29e0f0be6`;
+
+            // Fetch weather data using the Weather API URL
             return fetchData(weatherApiUrl);
         })
         .then(weatherdata => {
-            console.log('Weather Data received:', weatherdata);
-            wData = weatherdata.list[0].weather[0].main;
-            linkWeatherFood(wData);
-            return wData; 
+            // Extract weather icon code from the response data
+            const wIcon = weatherdata.list[0].weather[0].icon;
+            console.log('Your icon code is:', wIcon);
 
+            // Construct the URL for the weather icon image
+            const weatherIconUrl = `https://openweathermap.org/img/wn/${wIcon}@2x.png`;
+
+            // Set the src attribute of the weather icon image element
+            document.getElementById('weather-png').src = weatherIconUrl;
+
+            // Log the received weather data
+            console.log('Weather Data received:', weatherdata);
+
+            // Extract weather main data
+            const wData = weatherdata.list[0].weather[0].main;
+
+            // Process weather data
+            linkWeatherFood(wData);
+
+            // Return weather main data for further processing if needed
+            return wData; 
         });
 }
 
 const categoryList = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
-
-// Function to append food data
-// function appendCategoryList() {
-//     fetchData(categoryList)
-//         .then(data => {
-//             categoryArr = data.meals.map(item => Object.values(item));
-//             return categoryArr;
-//         })
-//         .then(() =>{
-//             console.log(categoryArr)
-//         })
-// }
-
 
 // Function to append category data 
 function appendCategory(selectedCategory) {
@@ -114,7 +124,7 @@ function appendButton(){
 
 
 
-const typeWeather = ["Thunderstorm", "Drizzle", "Rain", "Snow", "Clouds"];
+const typeWeather = ["Thunderstorm", "Drizzle", "Rain", "Snow", "Clouds", "Clear"];
 const categories = ["Lamb", 'Pasta', 'Pork', 'Seafood', 'Side', 'Side', 'Vegetarian'];
 
 function linkWeatherFood(wData){
@@ -123,7 +133,7 @@ function linkWeatherFood(wData){
     for (let i = 0; i < typeWeather.length; i++){
         if(typeWeather[i] == wData){
             cData = categories[i];
-            console.log(cData);
+            console.log("Your cData:", cData);
 
             //Chooses corresponding categories and selects random recipe within that category
             appendCategory(cData);
