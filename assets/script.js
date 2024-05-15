@@ -14,6 +14,16 @@ toggleButton.addEventListener('click', function () {
         darkMode = true;
     }
 });
+// trying to make the logo function as a home button
+document.addEventListener("DOMContentLoaded", function() {
+    const logo = document.getElementById("logo");
+
+    logo.addEventListener("click", function() {
+        history.back();
+    });
+});
+
+
 
 let city = document.querySelector('.search-bar');
 let categoryArr = [];
@@ -166,4 +176,13 @@ function recipeParts(rdata, name){
 
 appendButton();
 document.getElementById('submit').addEventListener('click', appendCity);
+
+// link about us page to about us button on front page
+document.addEventListener("DOMContentLoaded", function() {
+    const aboutUsButton = document.getElementById("about-us");
+  
+    aboutUsButton.addEventListener("click", function() {
+      window.location.href = "about.html";
+    });
+  });
 
