@@ -59,3 +59,11 @@ h1 {
     font-style: italic;
     text-align: center;
 }
+#return:hover,
+#taste:hover,
+#weather:hover,
+#about-us:hover,
+#toggle:hover{
+box-shadow: 0 4px 4px rgba(0, 0, 0, 0,2);
+background-color: rgb(239, 221, 129);
+}
