@@ -80,15 +80,7 @@ function appendCategory(selectedCategory) {
 
             let name = randomMeal.strMeal;
             let recipePNG = randomMeal.strMealThumb;
-            
-
-            //Selects random recipe from category
-            fetchData(recipe)
-            .then(data => { ``
-                
-                recipeParts(data, name);
-                return data})
-
+        
             document.getElementById('recipe-name').textContent = name;
             document.getElementById('recipe-image').src = recipePNG;
             document.getElementById('recipe-instructions').textContent = randomInstructions;
@@ -101,6 +93,7 @@ function appendCategory(selectedCategory) {
             fetchData(recipeUrl)
                 .then(data => {
                    console.log('Data for recipe:', data)
+                   recipeParts(data, name);
                 });
         });
 }
@@ -163,10 +156,6 @@ function recipeParts(rdata, name){
    document.getElementById("recipe-instructions").innerHTML = instructions;
 
     
-   document.getElementById.css("src", "imageUrl");
-
-    
-
 }
 
 
