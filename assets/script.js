@@ -162,11 +162,3 @@ function recipeParts(rdata, name){
 appendButton();
 document.getElementById('submit').addEventListener('click', appendCity);
 
-// link about us page to about us button on front page
-document.addEventListener("DOMContentLoaded", function() {
-    const aboutUsButton = document.getElementById("about-us");
-  
-    aboutUsButton.addEventListener("click", function() {
-      window.location.href = "about.html";
-    });
-  });
