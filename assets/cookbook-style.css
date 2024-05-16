@@ -17,7 +17,8 @@ header {
 header #return,
 header #taste,
 header #weather,
-header #about-us
+header #about-us,
+header #toggle
 { background-color: #babde2;
     color: #374375;
     border: none;
@@ -53,4 +54,11 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
     color: #374375;
 }
-
+#return:hover,
+#taste:hover,
+#weather:hover,
+#about-us:hover,
+#toggle:hover{
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    background-color: rgb(239, 221, 129);
+}

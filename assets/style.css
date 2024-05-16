@@ -42,26 +42,12 @@ header {
   display: block;
 }
 
-.dark-mode #toggle {
-  margin: 1em;
-  font-weight: bolder;
-  background-color: #babde2;
-  color: #374375;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.dark-mode #toggle:hover {
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-  background-color: rgb(239, 221, 129);
-}
-
 /*create button and animations*/
-header #Cook-Book,
-header #taste-switch,
-header #about-us {
+#Cook-Book,
+#taste-switch,
+#about-us,
+#toggle
+  {
   margin: 1em;
   font-weight: bolder;
   background-color: #babde2;
@@ -72,9 +58,11 @@ header #about-us {
   cursor: pointer;
 }
 
-header #Cook-Book:hover,
-header #taste-switch:hover,
-header #about-us:hover {
+#Cook-Book:hover,
+#taste-switch:hover,
+#about-us:hover,
+#toggle:hover
+ {
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   background-color: rgb(239, 221, 129);
 }
