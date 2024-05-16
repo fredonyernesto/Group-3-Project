@@ -167,7 +167,7 @@ function recipeParts(rdata, name){
 
    localStorage.setItem('currentRecipe', JSON.stringify(recipeObj));
 }
-}
+
 
 function cookbooktemp(){
     
@@ -184,4 +184,5 @@ function cookbooktemp(){
 document.getElementById('save-to-cookbook').addEventListener('click', cookbooktemp);
 cookbooktemp(recipeParts);
 document.getElementById('submit').addEventListener('click', appendCity);
+document.getElementById('regenerate').addEventListener('click', appendCity);
 
