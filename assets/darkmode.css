@@ -11,6 +11,7 @@
     
     #section-2, .recipes {
         background-color: #374375;
+        color: #fff;
     }
     
     #about-us-blog {
@@ -19,6 +20,7 @@
         padding: 20px;
         border-radius: 5px;
     }
+
     
     #about-us-blog h1,
     #about-us-blog h3 {
