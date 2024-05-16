@@ -1,29 +1,16 @@
-let darkMode = false;
-const toggleButton = document.getElementById('toggle');
-const body = document.body;
 
-//Function to enable dark mode
-toggleButton.addEventListener('click', function () {
-    if (darkMode) {
-        body.classList.remove('dark-mode');
-        darkMode = false;
-    } else {
-        body.classList.add('dark-mode');
-        darkMode = true;
+function displayLocalStorage() {
+    const localStorageContentDiv = document.getElementById('localStorage');
+    localStorageContentDiv.innerHTML = ''; 
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const value = JSON.parse(localStorage.getItem(key));
+        const keyValueParagraph = document.createElement('p');
+        keyValueParagraph.textContent = `${key}: ${JSON.stringify(value)}`;
+        localStorageContentDiv.appendChild(keyValueParagraph);
     }
-});
-
-if (typeof(Storage) !== "undefined") {
-    document.getElementById("search").addEventListener("click", function() {
-        var recipeName = document.getElementById("recipeName").value;
-        localStorage.setItem("searchedRecipe", recipeName);
-    });
-    window.addEventListener("load", function() {
-        var lastRecipe = localStorage.getItem("searchedRecipe");
-        if (lastRecipe !== null) {
-            document.getElementById("recipeName").value = lastRecipe;
-        }
-    });
-} else {
-    errorMessage.textContent = "Sorry, we couldn't find that recipe.";
 }
+
+window.onload = function() {
+    displayLocalStorage();
+};

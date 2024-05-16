@@ -10,6 +10,10 @@
     }
     
     #section-2 , .recipes {
+        background-color: #8094e3;
+    }
+    #localStorage {
         background-color: #374375;
+        color: #babde2;
     }
 }
