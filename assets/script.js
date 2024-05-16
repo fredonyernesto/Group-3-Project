@@ -92,11 +92,6 @@ function appendCategory(selectedCategory) {
 }
 
 
-function appendButton(){
-    let button = document.getElementById('taste-switch');
-    button.addEventListener('click', appendCategory);
-}
-
 const typeWeather = ["Thunderstorm", "Drizzle", "Rain", "Snow", "Clouds", "Clear"];
 const categories = ["Lamb", 'Pasta', 'Pork', 'Seafood', 'Side', 'Side', 'Vegetarian'];
 
@@ -162,6 +157,7 @@ function recipeParts(rdata, name){
 
    localStorage.setItem('currentRecipe', JSON.stringify(recipeObj));
 }
+}
 
 function cookbooktemp(){
     
@@ -170,12 +166,12 @@ function cookbooktemp(){
     const cookbook = JSON.parse(localStorage.getItem('cookbook') || '[]');
     cookbook.push(recipeObj);
     localStorage.setItem('cookbook', JSON.stringify(cookbook));
+    console.log(cookbook)
     }
     
 }
 
 document.getElementById('save-to-cookbook').addEventListener('click', cookbooktemp);
 cookbooktemp(recipeParts);
-appendButton();
 document.getElementById('submit').addEventListener('click', appendCity);
 
