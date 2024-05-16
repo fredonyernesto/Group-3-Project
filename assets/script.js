@@ -1,8 +1,7 @@
 let darkMode = false;
 const toggleButton = document.getElementById('toggle');
 const body = document.body;
-let wData; 
-let cData; 
+
 
 //Function to enable dark mode
 toggleButton.addEventListener('click', function () {
@@ -22,6 +21,9 @@ document.addEventListener("DOMContentLoaded", function() {
         history.back();
     });
 });
+
+let wData; 
+let cData; 
 
 let city = document.querySelector('.search-bar');
 
