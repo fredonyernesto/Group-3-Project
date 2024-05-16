@@ -178,4 +178,3 @@ document.getElementById('save-to-cookbook').addEventListener('click', cookbookte
 cookbooktemp(recipeParts);
 appendButton();
 document.getElementById('submit').addEventListener('click', appendCity);
-
