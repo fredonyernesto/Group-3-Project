@@ -43,6 +43,12 @@ function fetchData(url) {
 
 function appendCity(event) {
     event.preventDefault();
+
+    let inList = document.getElementById("recipe-ingredientlist");
+    while (inList.firstChild) {
+        inList.removeChild(inList.firstChild);
+      }
+    
     const city = document.querySelector('.search-bar').value;
     const geoApiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=c3023f6bd0f4493002d6feb29e0f0be6`;
 
@@ -92,11 +98,6 @@ function appendCategory(selectedCategory) {
 }
 
 
-function appendButton(){
-    let button = document.getElementById('taste-switch');
-    button.addEventListener('click', appendCategory);
-}
-
 const typeWeather = ["Thunderstorm", "Drizzle", "Rain", "Snow", "Clouds", "Clear"];
 const categories = ["Lamb", 'Pasta', 'Pork', 'Seafood', 'Side', 'Side', 'Vegetarian'];
 
@@ -116,6 +117,8 @@ function linkWeatherFood(wData){
 
 
 function recipeParts(rdata, name){
+    
+
     console.log("Data for recipe:" , rdata);
     let recipe = rdata.meals[0];
 
@@ -152,16 +155,19 @@ function recipeParts(rdata, name){
    document.getElementById('recipe-image').src = recipePNG;
 
    for (let i = 0; i < ingredientsList.length; i++){
-        let oneIngredient = document.getElementById("recipe-ingredientlist")
+        let htmlRecipe = document.getElementById("recipe-ingredientlist");
         let twoIngredient = document.createElement('li');
         twoIngredient.innerHTML = ingredientsList[i];
         console.log("two Ingredient", twoIngredient);
-        
-        oneIngredient.appendChild(twoIngredient);
- 
+        htmlRecipe.appendChild(twoIngredient);
+   }  
+
+       
+
 
    localStorage.setItem('currentRecipe', JSON.stringify(recipeObj));
 }
+
 
 function cookbooktemp(){
     
@@ -170,11 +176,11 @@ function cookbooktemp(){
     const cookbook = JSON.parse(localStorage.getItem('cookbook') || '[]');
     cookbook.push(recipeObj);
     localStorage.setItem('cookbook', JSON.stringify(cookbook));
+    console.log(cookbook)
     }
     
 }
 
 document.getElementById('save-to-cookbook').addEventListener('click', cookbooktemp);
 cookbooktemp(recipeParts);
-appendButton();
 document.getElementById('submit').addEventListener('click', appendCity);

@@ -63,9 +63,10 @@ header {
 #Cook-Book,
 #taste-switch,
 #about-us,
-#toggle
+#toggle,
+#regenerate
   {
-  margin: 1em;g
+  margin: 1em;
   font-weight: bolder;
   background-color: #babde2;
   color: #374375;
@@ -78,7 +79,8 @@ header {
 #Cook-Book:hover,
 #taste-switch:hover,
 #about-us:hover,
-#toggle:hover
+#toggle:hover,
+#regenerate:hover
  {
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   background-color: rgb(239, 221, 129);
@@ -238,8 +240,8 @@ header #about-us a:hover {
   width: 500px;
   margin: auto;
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0 auto;
 }
-
 #rating-bttn {
   margin: 1em;
   font-weight: bolder;
@@ -320,5 +322,76 @@ section[id^="Andrew"] h3 {
 
 #weather-png {
   width: 50px;
+  height: auto;
+}
+.container-1 {
+  width: 100%;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Footer Styles */
+footer {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f7f0e4;
+  color: #374375;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-content ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-content ul li {
+  margin-right: 15px;
+}
+
+.footer-content ul li a {
+  color: #374375;
+  text-decoration: none;
+}
+
+.footer-content ul li a:hover {
+  text-decoration: underline;
+}
+
+/* FAQ Styles */
+.faq {
+  margin: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+.question h2 {
+  margin-bottom: 10px;
+  color: #374375;
+}
+
+.answer {
+  padding: 10px;
+  background-color: #f7f0e4;
+  border-radius: 5px;
+  color: #374375;
+}
+
+#hero1 img {
+  margin-top: 10px;
+  max-width: 100%;
+  border-radius: 5px;
   height: auto;
 }
