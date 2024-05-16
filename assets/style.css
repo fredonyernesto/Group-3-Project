@@ -329,35 +329,38 @@ section[id^="Andrew"] h3 {
 }
 
 /* Footer Styles */
+
 footer {
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f7f0e4;
-  color: #374375;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
+  background-color: #f7f0e4; 
+  color: white; 
+  padding: 20px 0; 
+  border-radius: 5px;
+  margin-top: 10px;
 }
 
 .footer-content {
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
 }
 
 .footer-content ul {
   list-style-type: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
+  display: flex;
 }
 
 .footer-content ul li {
-  margin-right: 15px;
+  margin-right: 20px;
+}
+
+.footer-content ul li:last-child {
+  margin-right: 0; 
 }
 
 .footer-content ul li a {
-  color: #374375;
+  color: #374375; 
   text-decoration: none;
 }
 
@@ -365,6 +368,11 @@ footer {
   text-decoration: underline;
 }
 
+.logo {
+  width: 10%;
+  height: 10%;
+  margin-right: 20px;
+}
 /* FAQ Styles */
 .faq {
   margin: 20px;
@@ -393,3 +401,41 @@ footer {
   border-radius: 5px;
   height: auto;
 }
+
+
+
+/* 3 imges */
+
+/* .image-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.column {
+  flex: 1;
+  max-width: 300px; 
+  padding: 20px;
+  text-align: center;
+}
+
+.column img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.content {
+  margin-top: 20px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1rem;
+} */
