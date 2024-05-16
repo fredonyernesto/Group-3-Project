@@ -12,3 +12,18 @@ toggleButton.addEventListener('click', function () {
         darkMode = true;
     }
 });
+
+if (typeof(Storage) !== "undefined") {
+    document.getElementById("search").addEventListener("click", function() {
+        var recipeName = document.getElementById("recipeName").value;
+        localStorage.setItem("searchedRecipe", recipeName);
+    });
+    window.addEventListener("load", function() {
+        var lastRecipe = localStorage.getItem("searchedRecipe");
+        if (lastRecipe !== null) {
+            document.getElementById("recipeName").value = lastRecipe;
+        }
+    });
+} else {
+    errorMessage.textContent = "Sorry, we couldn't find that recipe.";
+}
