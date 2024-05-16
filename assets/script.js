@@ -135,13 +135,17 @@ function recipeParts(rdata, name){
     
     let ingredientsList = [];  
     //I need help converting string to variable
-    let i = 1;
-    let strIn = "strIngredient" + i;
-    console.log(recipe.strIn);
-    // while(recipe.strIn != null){
-    //    ingredientsList.push(recipe.strIndredients(i));
-    //    i++;
-    // }
+  
+    for(let i = 0; i < 20; i++){
+        let ingredient = recipe["strIngredient" + i];
+        if (ingredient != "" && ingredient != undefined){
+            let ingredient = recipe["strIngredient" + i];
+        console.log("Ingedient", ingredient);
+        ingredientsList.push(ingredient);
+        }
+        
+    } console.log("List", ingredientsList);
+
 
    console.log("Name: ", name);
    console.log("Category", category);
@@ -154,6 +158,14 @@ function recipeParts(rdata, name){
    
    document.getElementById("recipe-name").innerHTML = name;
    document.getElementById("recipe-instructions").innerHTML = instructions;
+   for (let i = 0; i < ingredientsList.length; i++){
+        let oneIngredient = document.getElementById("recipe-ingredientlist")
+        let twoIngredient = document.createElement('li');
+        twoIngredient.innerHTML = ingredientsList[i];
+        console.log("two Ingredient", twoIngredient);
+        
+        oneIngredient.appendChild(twoIngredient);
+   }
 
     
 }
