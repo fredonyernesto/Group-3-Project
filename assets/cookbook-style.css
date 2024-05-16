@@ -70,4 +70,6 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
     color:#374375;
     background-color: #f7f0e4;
+    text-align: center;
+    display: flex;
 }
