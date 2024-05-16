@@ -1,8 +1,7 @@
 let darkMode = false;
 const toggleButton = document.getElementById('toggle');
 const body = document.body;
-let wData; 
-let cData; 
+
 
 //Function to enable dark mode
 toggleButton.addEventListener('click', function () {
@@ -22,6 +21,9 @@ document.addEventListener("DOMContentLoaded", function() {
         history.back();
     });
 });
+
+let wData; 
+let cData; 
 
 let city = document.querySelector('.search-bar');
 
@@ -82,19 +84,10 @@ function appendCategory(selectedCategory) {
         .then(data => {
             let random = Math.floor(Math.random() * data.meals.length);
             let randomMeal = data.meals[random];
-            let randomInstructions = data.meals[random].strInstructions;
-
             let name = randomMeal.strMeal;
-            let recipePNG = randomMeal.strMealThumb;
-        
-            document.getElementById('recipe-name').textContent = name;
-            document.getElementById('recipe-image').src = recipePNG;
-            document.getElementById('recipe-instructions').textContent = randomInstructions;
-
 
             let recipeUrl = `https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`;
             console.log('Recipe Name:', name);
-            
             
             fetchData(recipeUrl)
                 .then(data => {
@@ -103,14 +96,6 @@ function appendCategory(selectedCategory) {
                 });
         });
 }
-
-
-function appendButton(){
-    let button = document.getElementById('taste-switch');
-    button.addEventListener('click', appendCategory);
-}
-
-
 
 
 const typeWeather = ["Thunderstorm", "Drizzle", "Rain", "Snow", "Clouds", "Clear"];
@@ -139,8 +124,14 @@ function recipeParts(rdata, name){
 
     let category = recipe.strCategory;
     let instructions = recipe.strInstructions;
-    let imageUrl = recipe.strMealThumb;
+    let recipePNG = recipe.strMealThumb;
     
+    let recipeObj = {
+        Category: category,
+        Instructions: instructions,
+        Recipe: recipePNG
+    };
+
     let ingredientsList = [];  
     //I need help converting string to variable
   
@@ -158,37 +149,39 @@ function recipeParts(rdata, name){
    console.log("Name: ", name);
    console.log("Category", category);
    console.log("Instructions", instructions);
-   console.log("url", imageUrl);
-
-   //document.getElementById(recipe-name).innerHTML = name;
-
-   //apend these variables to html elements
    
    document.getElementById("recipe-name").innerHTML = name;
    document.getElementById("recipe-instructions").innerHTML = instructions;
-
+   document.getElementById('recipe-image').src = recipePNG;
 
    for (let i = 0; i < ingredientsList.length; i++){
         let htmlRecipe = document.getElementById("recipe-ingredientlist");
         let twoIngredient = document.createElement('li');
         twoIngredient.innerHTML = ingredientsList[i];
         console.log("two Ingredient", twoIngredient);
-        
         htmlRecipe.appendChild(twoIngredient);
    }  
 
+       
+
+
+   localStorage.setItem('currentRecipe', JSON.stringify(recipeObj));
+}
+}
+
+function cookbooktemp(){
+    
+    const recipeObj = JSON.parse(localStorage.getItem('currentRecipe'));
+    if(recipeObj){
+    const cookbook = JSON.parse(localStorage.getItem('cookbook') || '[]');
+    cookbook.push(recipeObj);
+    localStorage.setItem('cookbook', JSON.stringify(cookbook));
+    console.log(cookbook)
+    }
     
 }
 
-
-appendButton();
+document.getElementById('save-to-cookbook').addEventListener('click', cookbooktemp);
+cookbooktemp(recipeParts);
 document.getElementById('submit').addEventListener('click', appendCity);
 
-// link about us page to about us button on front page
-document.addEventListener("DOMContentLoaded", function() {
-    const aboutUsButton = document.getElementById("about-us");
-  
-    aboutUsButton.addEventListener("click", function() {
-      window.location.href = "about.html";
-    });
-  });
