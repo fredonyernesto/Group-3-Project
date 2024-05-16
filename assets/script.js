@@ -79,7 +79,7 @@ function appendCategory(selectedCategory) {
 }
 
 const typeWeather = ["Thunderstorm", "Drizzle", "Rain", "Snow", "Clouds", "Clear"];
-const categories = ["Lamb", 'Pasta', 'Pork', 'Seafood', 'Side', 'Side', 'Vegetarian'];
+const categories = ["Chicken", 'Pasta', 'Beef', 'Seafood', 'Dessert', 'Side', 'Vegetarian'];
 
 function linkWeatherFood(wData) {
     for (let i = 0; i < typeWeather.length; i++) {
