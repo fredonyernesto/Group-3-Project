@@ -4,9 +4,9 @@ function displayLocalStorage() {
     localStorageContentDiv.innerHTML = ''; 
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
-        const value = localStorage.getItem(key);
+        const value = JSON.parse(localStorage.getItem(key));
         const keyValueParagraph = document.createElement('p');
-        keyValueParagraph.textContent = `${key}: ${value}`;
+        keyValueParagraph.textContent = `${key}: ${JSON.stringify(value)}`;
         localStorageContentDiv.appendChild(keyValueParagraph);
     }
 }
