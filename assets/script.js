@@ -78,19 +78,10 @@ function appendCategory(selectedCategory) {
         .then(data => {
             let random = Math.floor(Math.random() * data.meals.length);
             let randomMeal = data.meals[random];
-            let randomInstructions = data.meals[random].strInstructions;
-
             let name = randomMeal.strMeal;
-            let recipePNG = randomMeal.strMealThumb;
-        
-            document.getElementById('recipe-name').textContent = name;
-            document.getElementById('recipe-image').src = recipePNG;
-            document.getElementById('recipe-instructions').textContent = randomInstructions;
-
 
             let recipeUrl = `https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`;
             console.log('Recipe Name:', name);
-            
             
             fetchData(recipeUrl)
                 .then(data => {
@@ -105,9 +96,6 @@ function appendButton(){
     let button = document.getElementById('taste-switch');
     button.addEventListener('click', appendCategory);
 }
-
-
-
 
 const typeWeather = ["Thunderstorm", "Drizzle", "Rain", "Snow", "Clouds", "Clear"];
 const categories = ["Lamb", 'Pasta', 'Pork', 'Seafood', 'Side', 'Side', 'Vegetarian'];
@@ -133,34 +121,61 @@ function recipeParts(rdata, name){
 
     let category = recipe.strCategory;
     let instructions = recipe.strInstructions;
-    let imageUrl = recipe.strMealThumb;
+    let recipePNG = recipe.strMealThumb;
     
+    let recipeObj = {
+        Category: category,
+        Instructions: instructions,
+        Recipe: recipePNG
+    };
+
     let ingredientsList = [];  
     //I need help converting string to variable
-    let i = 1;
-    let strIn = "strIngredient" + i;
-    console.log(recipe.strIn);
-    // while(recipe.strIn != null){
-    //    ingredientsList.push(recipe.strIndredients(i));
-    //    i++;
-    // }
+  
+    for(let i = 0; i < 20; i++){
+        let ingredient = recipe["strIngredient" + i];
+        if (ingredient != "" && ingredient != undefined){
+            let ingredient = recipe["strIngredient" + i];
+        console.log("Ingedient", ingredient);
+        ingredientsList.push(ingredient);
+        }
+        
+    } console.log("List", ingredientsList);
+
 
    console.log("Name: ", name);
    console.log("Category", category);
    console.log("Instructions", instructions);
-   console.log("url", imageUrl);
-
-   //document.getElementById(recipe-name).innerHTML = name;
-
-   //apend these variables to html elements
    
    document.getElementById("recipe-name").innerHTML = name;
    document.getElementById("recipe-instructions").innerHTML = instructions;
+   document.getElementById('recipe-image').src = recipePNG;
 
+   for (let i = 0; i < ingredientsList.length; i++){
+        let oneIngredient = document.getElementById("recipe-ingredientlist")
+        let twoIngredient = document.createElement('li');
+        twoIngredient.innerHTML = ingredientsList[i];
+        console.log("two Ingredient", twoIngredient);
+        
+        oneIngredient.appendChild(twoIngredient);
+ 
+
+   localStorage.setItem('currentRecipe', JSON.stringify(recipeObj));
+}
+
+function cookbooktemp(){
+    
+    const recipeObj = JSON.parse(localStorage.getItem('currentRecipe'));
+    if(recipeObj){
+    const cookbook = JSON.parse(localStorage.getItem('cookbook') || '[]');
+    cookbook.push(recipeObj);
+    localStorage.setItem('cookbook', JSON.stringify(cookbook));
+    }
     
 }
 
-
+document.getElementById('save-to-cookbook').addEventListener('click', cookbooktemp);
+cookbooktemp(recipeParts);
 appendButton();
 document.getElementById('submit').addEventListener('click', appendCity);
 
